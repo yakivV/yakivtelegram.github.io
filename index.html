@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./telegram_data.js"></script>
+  <script src="./chart.js"></script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="day-mode">
+  <div id="telegram_charts">
+  </div>
+
+  <div class="toogle-mode">
+    <a id="toogle_day_night" href="#">Switch to Night Mode</a>
+  </div>
+</body>
+
+<script>
+  // display charts
+  for (var i = 0; i < TELEGRAM_DATA.length; i++) {
+    var chart = new TelegramChart({
+      chartName: "Chart " + (i + 1),
+      containerId: "telegram_charts",
+      svgHeight: 500, // in px
+      data: TELEGRAM_DATA[i]
+    });
+    chart.create();
+  }
+</script>
+
+<script>
+  // toogle day/night mode
+  var toogleModeButton = document.getElementById("toogle_day_night");
+
+  toogleModeButton.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    var body = document.querySelector("body"),
+      button = e.target,
+      newButtonText = (button.text == "Switch to Day Mode" ? "Switch to Night Mode" : "Switch to Day Mode"),
+      newMode = (body.getAttribute("class") == "day-mode" ? "night-mode" : "day-mode");
+
+    body.setAttribute("class", newMode);
+    button.text = newButtonText;
+  }, false);
+</script>
+
+</html>
