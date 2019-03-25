@@ -856,6 +856,19 @@ class TelegramChart {
     var line = document.getElementById(id);
 
     if (line) { // if line exists - update D attribute
+      line.setAttribute('class', ' ');
+      
+      if (line.getAttribute("d").length > 0 && d.length == 0) {
+        line.setAttribute('class', 'upLineHide');
+        setTimeout(function(){line.setAttribute('d', d);}, 200);
+        return;
+      } 
+      if (line.getAttribute("d").length == 0 && d.length > 0) {
+        line.setAttribute('class', 'downLineHide');
+        setTimeout(function(){line.setAttribute('d', d);}, 200);
+        return;
+      }
+      
       line.setAttribute('d', d);
       return;
     }
@@ -946,7 +959,7 @@ class TelegramChart {
   
     if (yDataHeight == this.maxDataHeightY) return;
 
-    var cssclass = yDataHeight > this.maxDataHeightY ? "up" : "down";
+    var cssclass = yDataHeight > this.maxDataHeightY ? "down" : "up";
 
     this.maxDataHeightY = yDataHeight;
 
