@@ -335,6 +335,7 @@ class TelegramChart {
 
     if (currentLeftBorderAttrX <= 0) {
       currentLeftScrollWidth = 0;
+      currentMainScrollWidth = this.svgWidth - this.startRightScrollWidth;
       this.leftBorder.setAttribute('x', 0);
       this.mainScroll.setAttribute('x', 0);
       this.mainScroll.style.width = (this.svgWidth - this.startRightScrollWidth) + 'px';
