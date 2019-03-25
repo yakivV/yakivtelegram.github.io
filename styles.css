@@ -72,6 +72,80 @@ div.popup-chart-dot-info {
 
 
 /**** animations *****/
+@-webkit-keyframes downLineHide {
+  0% { 
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes downLineHide {
+  0% { 
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+.downLineHide {
+  -webkit-animation: downLineHide 0.4s ease;
+  animation: downLineHide 0.4s ease;
+}
+
+@-webkit-keyframes upLineHide {
+  0% { 
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+@keyframes upLineHide {
+  0% { 
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+.upLineHide {
+  -webkit-animation: upLine 0.4s ease;
+  animation: upLineHide 0.4s ease;
+}
+@-webkit-keyframes upLine {
+  0% { 
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes upLine {
+  0% { 
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+.upLine {
+  -webkit-animation: upLine 0.4s ease;
+  animation: upLine 0.4s ease;
+}
+
 @-webkit-keyframes up {
   0% { 
     transform: translateY(0px);
