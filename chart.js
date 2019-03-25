@@ -399,6 +399,8 @@ class TelegramChart {
     this._calculateXYStepForMainChart(); 
     this._calculateXYStepForBarChart(); 
 
+    this._drawVerticalBar(this.x, this.y, this.mainChartStartY, true);
+
     this._drawMainChart();
     this._drawBarChart();
   }
@@ -665,6 +667,8 @@ class TelegramChart {
     for (var i = 0; i < data.length; i++) {
       var dot = data[i];
 
+      if (!this._isLineAllowed(dot.lineName)) continue;
+
       var circle = this._createSVGElement(
         "circle",
         [
@@ -706,6 +710,8 @@ class TelegramChart {
 
     for (var i = 0; i < data.length; i++) {
       var dot = data[i];
+
+      if (!this._isLineAllowed(dot.lineName)) continue;
 
       var dotInfo = document.createElement("div");
       var dotHeader = document.createElement("div");
@@ -772,8 +778,8 @@ class TelegramChart {
   _clearVerticalBar() {
     this.lineBarContainer.innerHTML = "";
   }
-  _drawVerticalBar(dataX, dataY, startY) {
-    if (this.lineBarContainer.innerHTML != "")  return;
+  _drawVerticalBar(dataX, dataY, startY, clear = false) {
+    if (this.lineBarContainer.innerHTML != "" && !clear)  return;
 
     var self = this;
 
